@@ -1,10 +1,35 @@
 defaults.sources.extra: [ defaults.yml ]
 
+groups:
+  edge:
+    members:
+    - edge1
+    - edge2
+    module: [ vrf, ospf, bgp ]
+    config: [ extra_config ]
+    bgp.as: 65001
+  core:
+    members:
+    - core1
+    module: [ ospf ]
+    config: [ extra_config ]
+
 
 nodes:
-  r1:
-  r2:
+  edge1:
+    vrfs:
+      CustA:
+  edge2:
+    vrfs:
+      CustA:
+  core1:
+
 links:
-- r1:
-  r2:
-  name: r1-to-r2
+- edge1:
+  core1:
+- edge2:
+  core1:
+- edge1: { vrf: CustA }
+  type: lan
+- edge2: { vrf: CustA }
+  type: lan
