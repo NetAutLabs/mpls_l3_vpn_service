@@ -1,0 +1,10 @@
+defaults.sources.extra: [ defaults.yml ]
+
+
+nodes:
+  r1:
+  r2:
+links:
+- r1:
+  r2:
+  name: r1-to-r2
