@@ -1,16 +1,16 @@
 router bgp {{ bgp.as }}
 
-{% for af in ['ipv4','ipv6'] %}
+{% for af in ['ipv4'] %}
   address-family vpn-{{ af }}
 {%   for n in bgp.neighbors %}
 {%     if n[af] is defined %}
-{{     neighbor {{ n[af]) }} activate
+    neighbor {{ n[af] }} activate
 {%     endif %}
 {%   endfor %}
 {% endfor %}
 
   vrf CustA 
-    rd {{ loopback.ipv4 }}:100
+    !rd {{ bgp.as }}:100
     route-target import vpn-ipv6 100:0
     route-target import vpn-ipv4 100:0
     route-target import vpn-ipv4 100:0

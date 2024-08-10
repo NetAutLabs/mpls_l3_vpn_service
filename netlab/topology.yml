@@ -1,6 +1,5 @@
 defaults.sources.extra: [ defaults.yml ]
 
-vrf.loopback: True
 
 groups:
   edge:
@@ -10,6 +9,7 @@ groups:
     module: [ vrf, ospf, bgp ]
     config: [ extra_config_mpls, extra_config_vpn ]
     bgp.as: 65001
+    vrf.loopback: True
   core:
     members:
     - core1
@@ -39,5 +39,5 @@ links:
   h1:
   type: lan
 - edge2: { vrf: CustA }
-  h1:
+  h2:
   type: lan
