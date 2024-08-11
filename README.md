@@ -1,7 +1,7 @@
 ---
 tags:
   - topic
-  - beginner
+  - intermediate
   - codespaces
 ---
 
@@ -10,7 +10,7 @@ tags:
 
 |             |                                                                                                         |
 | ----------: | :-------------------------------------------------------------------------------------------------------|
-| Level       | beginner|intermediate|expert                                                                            |
+| Level       | intermediate                                                                                            |
 | Repo        | [https://github.com/NetAutLabs/mpls_l3_vpn_service](https://github.com/NetAutLabs/mpls_l3_vpn_service)  |
 | Discussion  | [Discussion GitHub Repo](https://github.com/NetAutLabs/mpls_l3_vpn_service/discussions)                 |
 | Codespaces  | :material-check: [GitHub Codespaces](https://codespaces.new/NetAutLabs/mpls_l3_vpn_service)             |
