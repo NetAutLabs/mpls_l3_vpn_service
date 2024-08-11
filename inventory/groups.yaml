@@ -1,0 +1,7 @@
+---
+eos:
+  username: admin
+  platform: eos
+  data: {}
+edge:
+  data: {}
