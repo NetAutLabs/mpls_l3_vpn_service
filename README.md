@@ -20,6 +20,34 @@ In this lab, you will ...
 
 ## Setup
 
+``` mermaid
+flowchart LR
+    h1{h1}
+    h2{h2}
+    h3{h3}
+    h4{h4}
+    edge1(edge1)
+    edge2(edge2)
+    core1
+    
+    edge1 ---|MPLS| core1 ---|MPLS| edge2
+    
+    h1 ---- edge1
+    edge2 ---- h3
+    h2 ---- edge1
+    edge2 ---- h4
+
+    subgraph CustX
+        h2
+        h4
+    end
+    subgraph CustA
+        h1
+        h3
+    end
+
+```
+
 To interact with the virtual devices, you need to start the topology located in the "netlab" directory. From the main directory, you can use the shortcut command `make setup` to initiate it. To tear down the lab, use `make destroy`. If you have the necessary expertise, you can edit the [netlab](https://netlab.tools) topology, such as changing the Network Operating Systems (NOSs).
 
 
