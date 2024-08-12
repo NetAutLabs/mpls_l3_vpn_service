@@ -20,6 +20,17 @@ tags:
 
 In this lab, you will automate the provisioning and deprovisioning of L3VPN services in an MPLS network based on the service definitions in `services.yaml`.
 
+!!! tip "Fork"
+
+    Fork the repository to be able to commit your changes.
+
+
+!!! warning "cEOS"
+
+    The topology uses the container `ceos:4.32.1F`. This container needs to be downloaded from Arista and accordingly imported with `docker import <file> ceos:4.32.1F`.
+
+
+
 ## Setup
 
 ``` mermaid
