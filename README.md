@@ -1,6 +1,7 @@
 ---
 tags:
-  - topic
+  - nornir
+  - python
   - intermediate
   - codespaces
 ---
@@ -14,9 +15,10 @@ tags:
 | Repo        | [https://github.com/NetAutLabs/mpls_l3_vpn_service](https://github.com/NetAutLabs/mpls_l3_vpn_service)  |
 | Discussion  | [Discussion GitHub Repo](https://github.com/NetAutLabs/mpls_l3_vpn_service/discussions)                 |
 | Codespaces  | :material-check: [GitHub Codespaces](https://codespaces.new/NetAutLabs/mpls_l3_vpn_service)             |
+| NOSs        | Arista cEOS                                                                                             |
 
 
-In this lab, you will ...
+In this lab, you will automate the provisioning and deprovisioning of L3VPN services in an MPLS network based on the service definitions in `services.yaml`.
 
 ## Setup
 
@@ -52,28 +54,18 @@ To interact with the virtual devices, you need to start the topology located in 
 
 
 ## Lab
-In general, you have to automate the following use case and implement it with Ansible.
-The labs go hand in hand with the lecture. Self-research and finding a solution are part of the lab
-but do not hesitate to ask for advice if you are stuck.
+In general, you have to automate the following use case and implement it with [Nornir](https://nornir.readthedocs.io/en/stable/index.html).
 
 
 ### L3 Service
 
-Automate the deployment of new L3 Services (VRFs) on edge routers.
+In this task, you will automate the deployment of new Layer 3 VPN (L3VPN) services by configuring Virtual Routing and Forwarding (VRF) instances on edge routers.
 
+- **VRF Creation**: For each new L3 service defined in `services.yaml`, a corresponding VRF must be created on the relevant edge routers.
+- **BGP Integration**: Once the VRF is created, it must be integrated into the BGP configuration by adding it to the appropriate BGP address family. This ensures that the VRF can exchange routing information with other routers in the MPLS network.
+- **Access Interface Configuration**: Configure the appropriate access interfaces on the edge routers and assign them to the correct VRF.
 
-For every L3 service on an edge router, the VRF must be created and added to the BGP address family.
-As you know from CN2 for L3 MPLS, BGP must be configured in a full mash or using a route reflector.
-Also, LDP must be enabled on the interfaces and IP connectivity between BGP peers.
-
-
-Some of the involved technologies:
-
-- VRFs
-- MPLS
-- LDP
-- BGP
-- OSPF
+By automating these steps, you will streamline the provisioning of L3VPN services, ensuring consistent and reliable configurations across your network.
 
 ### How to start
 
@@ -97,15 +89,11 @@ The following is a possible approach to reach the goal as efficiently as possibl
 
 ### MPLS Refresh
 
-In the module Bachelor studies, you learned about MPLS and also had a practical lab. If you don't remember all the details don't worry.
 For this lab, you don't need a deep MPLS understanding as the basic configuration is given already.
 
 #### MPLS Edge
 
-Talking about MPLS the construct of Provider Edge (PE) and Customer Edge (CE) routers is coming up in our minds. CEs connect to a PE and exchange in an L3 Service
-the IPv4 and IPv6 prefixes and learn from the PE the available prefixes on other connection exchanged networks. For the exchange of these prefixes routing protocols are used.
-This is necessary if the PEs and the CEs are not managed by the same party for example if the MPLS L3Service is bought by a service provider.
-If the same organization is managing both devices there is most cases no need to add this additional complexity. So, what we can do is combine the PEs and CEs into an edge router.
+When discussing MPLS, the concepts of Provider Edge (PE) and Customer Edge (CE) routers often come to mind. CEs connect to a PE and exchange IPv4 and IPv6 prefixes within an L3 service, learning about available prefixes on other connected networks through the PE. Routing protocols facilitate this exchange, especially when PEs and CEs are managed by different parties, such as when an MPLS L3 service is provided by a service provider. However, if the same organization manages both devices, this added complexity is often unnecessary. In such cases, PEs and CEs can be combined into a single "edge" router.
 
 **In this lab, we control all the hardware and can do the "MPLS to the Edge" approach.**
 
@@ -114,13 +102,23 @@ If the same organization is managing both devices there is most cases no need to
     Lab Configuration
     The lab is already preconfigured with the base config and MPLS (OSPF and BGP).
     Also the Service for  `CustA` is already configured as an example. This service should be part of your automation.
-    Base and MPLS configurations are static and do not need to be automated (The automation is done with `netlab` to spin up the topology).
+    **Base and MPLS configurations are static and do not need to be automated (The automation is done with `netlab` to spin up the topology).**
 
 
 ## Task
 
-Automate the use case with Ansible. Services need to be deployed or de-provisioned by editing the file `services.yaml`.
-To add a new service, it needs to be added to `services.yaml` and the playbook needs to be executed.
-If a service is removed in `services.yaml`, the service needs to be removed on the network devices after running the same playbook again.
-There are not a lot of requirements; Therefore you have a lot of freedom but also makes this exercise more challenging.
+Automate this use case using Nornir. Services should be deployed or deprovisioned by modifying the `services.yaml` file.
+
+To add a new service, include it in `services.yaml` and then execute the Python script (`python3 l3vpn/`). If a service is removed or changed in `services.yaml`, the corresponding changes should be applied to the network devices by running the same Python script again.
+
+There isn't a single correct solution -- multiple approaches are valid. All four hosts can be assigned to different services or any combination of services. Note that the base configuration and MPLS/BGP/OSPF configurations do not need to be automated.
+
+
+## Run your Automation
+
+If you follow the provided project structure, you can start your Python script with the following command:
+
+```bash
+python3 l3vpn/ --help
+```
 
