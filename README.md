@@ -6,16 +6,16 @@ tags:
   - codespaces
 ---
 
-# Lab Name
+# L3VPN Service with Nornir
 
 
-|             |                                                                                                         |
-| ----------: | :-------------------------------------------------------------------------------------------------------|
-| Level       | intermediate                                                                                            |
-| Repo        | [https://github.com/NetAutLabs/mpls_l3_vpn_service](https://github.com/NetAutLabs/mpls_l3_vpn_service)  |
-| Discussion  | [Discussion GitHub Repo](https://github.com/NetAutLabs/mpls_l3_vpn_service/discussions)                 |
-| Codespaces  | :material-check: [GitHub Codespaces](https://codespaces.new/NetAutLabs/mpls_l3_vpn_service)             |
-| NOSs        | Arista cEOS                                                                                             |
+|             |                                                                                                                |
+| ----------: | :--------------------------------------------------------------------------------------------------------------|
+| Level       | intermediate                                                                                                   |
+| Repo        | [https://github.com/NetAutLabs/mpls_l3_vpn_service](https://github.com/NetAutLabs/nornir_mpls_l3_vpn_service)  |
+| Discussion  | [Discussion GitHub Repo](https://github.com/NetAutLabs/nornir_mpls_l3_vpn_service/discussions)                 |
+| Codespaces  | :material-check: [GitHub Codespaces](https://codespaces.new/NetAutLabs/nornir_mpls_l3_vpn_service)             |
+| NOSs        | Arista cEOS                                                                                                    |
 
 
 In this lab, you will automate the provisioning and deprovisioning of L3VPN services in an MPLS network based on the service definitions in `services.yaml`.
