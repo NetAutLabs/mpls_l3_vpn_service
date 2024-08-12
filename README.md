@@ -133,3 +133,18 @@ If you follow the provided project structure, you can start your Python script w
 python3 l3vpn/ --help
 ```
 
+
+!!! tip "Connect to a device"
+
+    To connect to the devices using the shell, you can use `netlab`. Simply navigate to the "netlab" directory and run `netlab connect <device name>`.
+
+    ```bash
+    $ cd netlab
+    $ netlab connect h1
+    Connecting to container clab-netlab-h1, starting bash
+    h1:/# ping 172.16.2.2
+    PING 172.16.2.2 (172.16.2.2): 56 data bytes
+    64 bytes from 172.16.2.2: seq=0 ttl=64 time=41.640 ms
+    64 bytes from 172.16.2.2: seq=1 ttl=64 time=1.856 ms
+    64 bytes from 172.16.2.2: seq=2 ttl=64 time=1.506 ms
+    ```
