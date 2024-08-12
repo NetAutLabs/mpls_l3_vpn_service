@@ -29,6 +29,10 @@ nodes:
     device: linux
   h2:
     device: linux
+  h3:
+    device: linux
+  h4:
+    device: linux
 
 links:
 - edge1:
@@ -38,6 +42,12 @@ links:
 - edge1: { vrf: CustA }
   h1:
   type: lan
-- edge2: { vrf: CustA }
+- edge1:
   h2:
+  type: lan
+- edge2: { vrf: CustA }
+  h3:
+  type: lan
+- edge2:
+  h3:
   type: lan
