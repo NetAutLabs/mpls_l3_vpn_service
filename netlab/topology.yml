@@ -15,6 +15,13 @@ groups:
     - core1
     module: [ ospf ]
     config: [ extra_config_mpls ]
+  host:
+    members:
+    - h1
+    - h2
+    - h3
+    - h4
+    module: [ ]
 
 
 nodes:
@@ -49,5 +56,5 @@ links:
   h3:
   type: lan
 - edge2:
-  h3:
+  h4:
   type: lan

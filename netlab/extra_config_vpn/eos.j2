@@ -1,4 +1,17 @@
+default interface Ethernet3
+
+router ospf 1
+  default passive-interface Ethernet 3
+
+vrf instance CustA
+   rd {{ bgp.router_id }}:100
+
+
 router bgp {{ bgp.as }}
+  address-family ipv4
+    no network 192.168.1.0/24
+    no network 192.168.2.0/24
+    exit
 
 {% for af in ['ipv4'] %}
   address-family vpn-{{ af }}
@@ -10,12 +23,12 @@ router bgp {{ bgp.as }}
 {% endfor %}
 
   vrf CustA 
-    !rd {{ bgp.as }}:100
-    route-target import vpn-ipv6 100:0
+    rd {{ bgp.router_id }}:100
+    no route-target import
+    no route-target export
+    ! route-target import vpn-ipv6 100:0
     route-target import vpn-ipv4 100:0
-    route-target import vpn-ipv4 100:0
-    route-target import vpn-ipv4 100:0 
-    route-target export vpn-ipv6 100:0
+    ! route-target export vpn-ipv6 100:0
     route-target export vpn-ipv4 100:0
     redistribute connected
     redistribute static
