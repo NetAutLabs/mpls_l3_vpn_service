@@ -4,8 +4,10 @@ edge1:
   groups:
     - eos
     - edge
+    - site-A
 edge2:
   hostname: 192.168.121.101
   groups:
     - eos
     - edge
+    - site-B
