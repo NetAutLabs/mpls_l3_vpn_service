@@ -12,3 +12,6 @@ netlab/netlab.snapshot.yml
 .venv
 __pycache__
 nornir.log
+
+cEOS*
+ceos*
